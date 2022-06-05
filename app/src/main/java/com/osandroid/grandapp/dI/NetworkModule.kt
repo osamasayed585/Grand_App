@@ -4,6 +4,7 @@ package com.osandroid.grandapp.dI
 import androidx.lifecycle.MutableLiveData
 import com.osandroid.grandapp.restfulApi.ApiService
 import com.osandroid.grandapp.roomDatabase.model.Albums
+import com.osandroid.grandapp.roomDatabase.model.Photos
 import com.osandroid.grandapp.roomDatabase.model.User
 import com.osandroid.grandapp.utils.CONSTANTS.Companion.BASE_URL
 import dagger.Module
@@ -11,12 +12,14 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
+import javax.inject.Singleton
 
 
 @Module
@@ -66,6 +69,11 @@ class NetworkModule {
 
     @Provides
     fun userProfileResponseMutableLiveData(): MutableLiveData<List<User>> {
+        return MutableLiveData()
+    }
+
+    @Provides
+    fun providePhotosResponseMutableLiveData(): MutableLiveData<List<Photos>> {
         return MutableLiveData()
     }
 }
