@@ -30,11 +30,13 @@ class UserProfile : BaseActivity() {
         mAlbumsAdapter = UserAlbumsAdapter()
         mBinding.userAlbums.adapter = mAlbumsAdapter
 
-        val intent = Intent(this, AlbumDetails::class.java)
+
 
         mAlbumsAdapter.initListener(object : UserAlbumsAdapter.OnClickAlbumListener {
             override fun onAlbumClicked(id: Int) {
-                intent.putExtra(CONSTANTS.INTENT.ID, id)
+                val intent = Intent(this@UserProfile, AlbumDetails::class.java).apply {
+                    putExtra(CONSTANTS.INTENT.ID, id)
+                }
                 startActivity(intent)
             }
         })

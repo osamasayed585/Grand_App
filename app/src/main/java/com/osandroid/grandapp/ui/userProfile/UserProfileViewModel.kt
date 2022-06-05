@@ -23,32 +23,32 @@ class UserProfileViewModel @Inject constructor() : BaseViewModel() {
 
     fun requestUser(id: Int) = viewModelScope.launch {
 
-        onLoadingProgressBar.postValue(true)
+        onLoadingProgressBar?.postValue(true)
 
         val result: Response<List<User>> = grandRepository.requestUser(id)
 
         if (result.isSuccessful && result.body() != null) {
-            onLoadingProgressBar.postValue(false)
+            onLoadingProgressBar?.postValue(false)
             userProfileResponseMutableLiveData.postValue(result.body())
         } else {
-            onLoadingProgressBar.postValue(false)
+            onLoadingProgressBar?.postValue(false)
             Timber.i("Osama requestUser: ${result.message()}")
         }
     }
 
     fun requestAlbums(id: Int) = viewModelScope.launch {
 
-        onLoadingProgressBar.postValue(true)
+        onLoadingProgressBar?.postValue(true)
 
         val result: Response<List<Albums>> = grandRepository.requestAlbums(id)
 
         if (result.isSuccessful && result.body() != null) {
-            onLoadingProgressBar.postValue(false)
+            onLoadingProgressBar?.postValue(false)
             albumsResponseMutableLiveData.postValue(result.body())
 
         } else {
-            onLoadingProgressBar.postValue(false)
-            Timber.i("Osama requestUser: ${result.message()}")
+            onLoadingProgressBar?.postValue(false)
+            Timber.i("Osama requestAlbums: ${result.message()}")
         }
     }
 }

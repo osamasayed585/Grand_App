@@ -11,7 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 open class BaseViewModel @Inject constructor() : ViewModel() {
 
-    @Inject
+    @Inject 
     lateinit var grandRepository: GrandRepository
 
     @Inject
