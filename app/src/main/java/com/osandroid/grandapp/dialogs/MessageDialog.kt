@@ -23,7 +23,7 @@ class MessageDialog @Inject constructor(@ActivityContext context: Context) : Dia
         mBinding = DialogMessageBinding.inflate(LayoutInflater.from(context))
         setContentView(mBinding.root)
 
-        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         window!!.attributes.windowAnimations = R.style.Animation_Design_BottomSheetDialog
 
         mBinding.stayOffline.setOnClickListener { stayOffline() }

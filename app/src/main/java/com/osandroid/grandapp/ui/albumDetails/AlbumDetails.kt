@@ -34,8 +34,7 @@ class AlbumDetails : BaseActivity() {
         setSupportActionBar(mBinding.myToolbar)
 
         mViewModel = ViewModelProvider(this)[AlbumDetailsViewModel::class.java]
-
-        mViewModel.onLoadingProgressBar.observe(this) {onLoading(it)}
+        mViewModel.onLoadingProgressBar.observe(this) { onLoading(it) }
         mViewModel.onApiError.observe(this) { message ->
             isInternetAvailable(message)
             mMessageDialog.showDialog()
@@ -44,22 +43,26 @@ class AlbumDetails : BaseActivity() {
         mMessageDialog.initStayOfflineClick(object : MessageDialog.StayOfflineListener {
             override fun offline() {
                 Toast.makeText(applicationContext, "You are offline", Toast.LENGTH_LONG).show()
+                mViewModel.fetchAllPhotos()
             }
         })
         mMessageDialog.initRetryCallApiLineClick(object : MessageDialog.RetryCallApiListener {
             override fun retryCallApi() {
-                Toast.makeText(applicationContext, "Retry connect to internet", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Retry connect to internet", Toast.LENGTH_LONG)
+                    .show()
                 hitApi()
             }
         })
 
-        hitApi()
+        if (isNetworkConnected())
+            hitApi()
 
         val photoAdapter = PhotosAdapter()
         mBinding.photos.adapter = photoAdapter
 
         mViewModel.photosResponseMutableLiveData.observe(this) { photos: List<Photos> ->
             run {
+                mViewModel.addPhotos(photos)
                 photoAdapter.setData(photos)
             }
         }
