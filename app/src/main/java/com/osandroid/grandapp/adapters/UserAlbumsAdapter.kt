@@ -29,7 +29,7 @@ class UserAlbumsAdapter : RecyclerView.Adapter<UserAlbumsAdapter.MyViewHolder>()
             binding.albumId.text = album.id.toString()
 
             itemView.setOnClickListener {
-                mListener.onAlbumClicked(albums[adapterPosition].userId)
+                mListener.onAlbumClicked(albums[adapterPosition].id)
             }
         }
     }

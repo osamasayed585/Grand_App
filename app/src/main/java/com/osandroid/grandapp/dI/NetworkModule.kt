@@ -63,6 +63,11 @@ class NetworkModule {
     }
 
     @Provides
+    fun provideStringMutableLiveData(): MutableLiveData<String> {
+        return MutableLiveData()
+    }
+
+    @Provides
     fun provideAlbumsMutableLiveData(): MutableLiveData<List<Albums>> {
         return MutableLiveData<List<Albums>>()
     }

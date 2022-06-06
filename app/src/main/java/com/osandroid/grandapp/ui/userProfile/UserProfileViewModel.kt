@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.osandroid.grandapp.base.BaseViewModel
 import com.osandroid.grandapp.roomDatabase.model.Albums
 import com.osandroid.grandapp.roomDatabase.model.User
+import com.osandroid.grandapp.utils.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -23,32 +24,46 @@ class UserProfileViewModel @Inject constructor() : BaseViewModel() {
 
     fun requestUser(id: Int) = viewModelScope.launch {
 
-        onLoadingProgressBar?.postValue(true)
+        onLoadingProgressBar.postValue(true)
 
-        val result: Response<List<User>> = grandRepository.requestUser(id)
-
-        if (result.isSuccessful && result.body() != null) {
-            onLoadingProgressBar?.postValue(false)
-            userProfileResponseMutableLiveData.postValue(result.body())
-        } else {
-            onLoadingProgressBar?.postValue(false)
-            Timber.i("Osama requestUser: ${result.message()}")
+        val result = try {
+            Result.Success(grandRepository.requestUser(id))
+        } catch (e: Exception) {
+            Result.Error(Exception("Network request failed"))
         }
+        when (result) {
+            is Result.Success<Response<List<User>>> -> {
+                onLoadingProgressBar.postValue(false)
+                userProfileResponseMutableLiveData.postValue(result.data.body())
+            }
+            else -> {
+                onLoadingProgressBar.postValue(false)
+                onApiError.postValue("no internet")
+                Timber.i("Osama requestUser: Error")
+            }
+        }
+
     }
 
     fun requestAlbums(id: Int) = viewModelScope.launch {
+        onLoadingProgressBar.postValue(true)
 
-        onLoadingProgressBar?.postValue(true)
+        val result = try {
+            Result.Success(grandRepository.requestAlbums(id))
+        } catch (e: Exception) {
+            Result.Error(Exception("Network request failed"))
+        }
 
-        val result: Response<List<Albums>> = grandRepository.requestAlbums(id)
-
-        if (result.isSuccessful && result.body() != null) {
-            onLoadingProgressBar?.postValue(false)
-            albumsResponseMutableLiveData.postValue(result.body())
-
-        } else {
-            onLoadingProgressBar?.postValue(false)
-            Timber.i("Osama requestAlbums: ${result.message()}")
+        when (result) {
+            is Result.Success<Response<List<Albums>>> -> {
+                onLoadingProgressBar.postValue(false)
+                albumsResponseMutableLiveData.postValue(result.data.body())
+            }
+            else -> {
+                onLoadingProgressBar.postValue(false)
+                onApiError.postValue("no internet")
+                Timber.i("Osama requestPhotos: Error")
+            }
         }
     }
 }

@@ -3,10 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/activity_album_detalis.xml" value="0.25" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/drawable/grand.xml" value="0.22" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/drawable/grand__2_.xml" value="0.3525" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/drawable/rounded_corner_orange_solid.xml" value="0.2135" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/activity_album_detalis.xml" value="0.33" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/activity_base.xml" value="0.33179487179487177" />
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/activity_main.xml" value="0.3463541666666667" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/activity_search_results.xml" value="0.33967391304347827" />
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/activity_user_profile.xml" value="0.22" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/dialog_message.xml" value="0.22" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/row_photo_item.xml" value="0.33" />
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/row_profile_item.xml" value="1.1" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/search_view_layout.xml" value="0.33967391304347827" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/toolbar_search_view.xml" value="0.33967391304347827" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/menu-v26/album_details_menu.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/menu/album_details_menu.xml" value="0.35104166666666664" />
       </map>
     </option>
   </component>

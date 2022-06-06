@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Grand App</string>
+    <string name="search">Search</string>
+    <string name="search_hint">search for album</string>
+    <string name="stay_offline">Stay offline</string>
+    <string name="no_internet_connection">Oh no! \nNo internet found. check your connection or stay offline</string>
+    <string name="retry">Retry</string>
 </resources>
