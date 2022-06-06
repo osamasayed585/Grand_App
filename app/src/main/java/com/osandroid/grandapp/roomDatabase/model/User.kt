@@ -1,10 +1,13 @@
 package com.osandroid.grandapp.roomDatabase.model
 
-import javax.inject.Inject
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity
 data class User(
-    var id: Int,
-    var name: String,
+    @PrimaryKey var id: Int,
+    @ColumnInfo(name = "name") var name: String,
     var username: String,
     var email: String,
     var address: Address,

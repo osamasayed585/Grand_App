@@ -1,18 +1,16 @@
 package com.osandroid.grandapp.base
 
 import android.content.Context
+import android.net.ConnectivityManager
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.github.ybq.android.spinkit.SpinKitView
-import com.google.android.material.snackbar.Snackbar
-import com.osandroid.grandapp.R
 import com.osandroid.grandapp.databinding.ActivityBaseBinding
 import com.osandroid.grandapp.dialogs.MessageDialog
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ActivityContext
-import kotlinx.android.synthetic.main.dialog_message.*
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 open class BaseActivity : AppCompatActivity() {
@@ -38,6 +36,11 @@ open class BaseActivity : AppCompatActivity() {
 
     fun isInternetAvailable(message: String): (m: String) -> Unit = {
         mMessageDialog.setMessage(it)
+    }
+
+    fun isNetworkConnected(): Boolean{
+        val cm: ConnectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return cm.activeNetworkInfo != null && cm.activeNetworkInfo!!.isConnected
     }
 
 }

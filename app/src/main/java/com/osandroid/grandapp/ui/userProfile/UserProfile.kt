@@ -2,13 +2,8 @@ package com.osandroid.grandapp.ui.userProfile
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
-import com.osandroid.grandapp.R
 import com.osandroid.grandapp.adapters.UserAlbumsAdapter
 import com.osandroid.grandapp.base.BaseActivity
 import com.osandroid.grandapp.databinding.ActivityUserProfileBinding
@@ -17,9 +12,7 @@ import com.osandroid.grandapp.roomDatabase.model.User
 import com.osandroid.grandapp.ui.albumDetails.AlbumDetails
 import com.osandroid.grandapp.utils.CONSTANTS
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.dialog_message.*
 import timber.log.Timber
-import kotlin.random.Random
 
 @AndroidEntryPoint
 class UserProfile : BaseActivity() {
@@ -34,7 +27,7 @@ class UserProfile : BaseActivity() {
         setContentView(mBinding.root)
 
         mViewModel = ViewModelProvider(this)[UserProfileViewModel::class.java]
-        mViewModel.onLoadingProgressBar.observe(this) {onLoading(it)}
+        mViewModel.onLoadingProgressBar.observe(this) { onLoading(it) }
 
 
         mViewModel.onApiError.observe(this) { message ->
@@ -45,28 +38,36 @@ class UserProfile : BaseActivity() {
         mMessageDialog.initStayOfflineClick(object : MessageDialog.StayOfflineListener {
             override fun offline() {
                 Toast.makeText(applicationContext, "You are offline", Toast.LENGTH_LONG).show()
+                mViewModel.fetchUser()
+                mViewModel.fetchAlbums()
             }
         })
         mMessageDialog.initRetryCallApiLineClick(object : MessageDialog.RetryCallApiListener {
             override fun retryCallApi() {
-                Toast.makeText(applicationContext, "Retry connect to internet", Toast.LENGTH_LONG).show()
-                requestApis()
+                Toast.makeText(applicationContext, "Retry connect to internet", Toast.LENGTH_LONG)
+                    .show()
+                if (isNetworkConnected())
+                    requestApis()
             }
         })
-
-        requestApis()
+        if (isNetworkConnected())
+            requestApis()
 
         mAlbumsAdapter = UserAlbumsAdapter()
         mBinding.userAlbums.adapter = mAlbumsAdapter
 
         mAlbumsAdapter.initListener(onClickAlbumListener())
 
-        mViewModel.userProfileResponseMutableLiveData.observe(this) { user: List<User> ->
+        mViewModel.userProfileResponse.observe(this) { user: List<User> ->
+            mViewModel.addUser(user)
             mBinding.userName.text = user[0].name
             mBinding.userAddress.text = user[0].name
         }
 
-        mViewModel.albumsResponseMutableLiveData.observe(this) { mAlbumsAdapter.setData(it) }
+        mViewModel.albumsResponse.observe(this) {
+            mViewModel.addAlbums(it)
+            mAlbumsAdapter.setData(it)
+        }
     }
 
     private fun requestApis() {

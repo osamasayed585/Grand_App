@@ -16,10 +16,10 @@ import javax.inject.Inject
 class UserProfileViewModel @Inject constructor() : BaseViewModel() {
 
     @Inject
-    lateinit var userProfileResponseMutableLiveData: MutableLiveData<List<User>>
+    lateinit var userProfileResponse: MutableLiveData<List<User>>
 
     @Inject
-    lateinit var albumsResponseMutableLiveData: MutableLiveData<List<Albums>>
+    lateinit var albumsResponse: MutableLiveData<List<Albums>>
 
 
     fun requestUser(id: Int) = viewModelScope.launch {
@@ -34,7 +34,7 @@ class UserProfileViewModel @Inject constructor() : BaseViewModel() {
         when (result) {
             is Result.Success<Response<List<User>>> -> {
                 onLoadingProgressBar.postValue(false)
-                userProfileResponseMutableLiveData.postValue(result.data.body())
+                userProfileResponse.postValue(result.data.body())
             }
             else -> {
                 onLoadingProgressBar.postValue(false)
@@ -57,7 +57,7 @@ class UserProfileViewModel @Inject constructor() : BaseViewModel() {
         when (result) {
             is Result.Success<Response<List<Albums>>> -> {
                 onLoadingProgressBar.postValue(false)
-                albumsResponseMutableLiveData.postValue(result.data.body())
+                albumsResponse.postValue(result.data.body())
             }
             else -> {
                 onLoadingProgressBar.postValue(false)
@@ -66,4 +66,39 @@ class UserProfileViewModel @Inject constructor() : BaseViewModel() {
             }
         }
     }
+
+    fun fetchUser() = viewModelScope.launch {
+        onLoadingProgressBar.postValue(true)
+        val result = grandRepository.fetchAllUserData()
+
+        if (result.isNotEmpty()) {
+            onLoadingProgressBar.postValue(false)
+            userProfileResponse.postValue(result)
+        } else {
+            onLoadingProgressBar.postValue(false)
+            Timber.i("Osama No Data")
+        }
+    }
+
+    fun fetchAlbums() = viewModelScope.launch {
+        onLoadingProgressBar.postValue(true)
+        val result = grandRepository.fetchAllAlbums()
+
+        if (result.isNotEmpty()) {
+            onLoadingProgressBar.postValue(false)
+            albumsResponse.postValue(result)
+        } else {
+            onLoadingProgressBar.postValue(false)
+            Timber.i("Osama No Data")
+        }
+    }
+
+    fun addAlbums(albums: List<Albums>) = viewModelScope.launch {
+        grandRepository.addAllAlbums(albums)
+    }
+
+    fun addUser(user: List<User>) = viewModelScope.launch {
+        grandRepository.addUser(user)
+    }
+
 }

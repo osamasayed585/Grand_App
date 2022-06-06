@@ -41,4 +41,13 @@ class AlbumDetailsViewModel @Inject constructor() : BaseViewModel() {
             }
         }
     }
+
+    fun addPhotos(photos: List<Photos>) = viewModelScope.launch {
+        (grandRepository.addPhotos(photos))
+    }
+
+    fun fetchAllPhotos() = viewModelScope.launch {
+        val result = grandRepository.fetchAllPhotosData()
+        photosResponseMutableLiveData.postValue(result)
+    }
 }
