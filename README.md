@@ -1,6 +1,6 @@
 # Grand_App
 ## A Simple Grand-App built to demonstrate the use of Modern Android development tools  - (Kotlin, Coroutines, State Flow, Hilt-Dependency Injection, Jetpack DataStore, Architecture Components, MVVM, Room, Material Design Components).
-## Libraries Used:
+## Built With 🛠
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
