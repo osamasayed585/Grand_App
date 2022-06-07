@@ -101,4 +101,9 @@ class AlbumDetails : BaseActivity() {
         return true
     }
 
+    override fun onStart() {
+        super.onStart()
+        hitApi()
+    }
+
 }

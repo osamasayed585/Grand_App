@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/drawable/grand.xml" value="0.22" />
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/drawable/grand__2_.xml" value="0.3525" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/drawable/ic_grand_foreground.xml" value="0.2085" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2085" />
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/drawable/rounded_corner_orange_solid.xml" value="0.2135" />
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/activity_album_detalis.xml" value="0.33" />
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/activity_base.xml" value="0.33179487179487177" />
@@ -18,6 +20,7 @@
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/layout/toolbar_search_view.xml" value="0.33967391304347827" />
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/menu-v26/album_details_menu.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/menu/album_details_menu.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Osama/AndroidStudioProjects/GrandApp/app/src/main/res/mipmap-anydpi-v26/ic_grand_round.xml" value="0.2165" />
       </map>
     </option>
   </component>

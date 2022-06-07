@@ -87,7 +87,8 @@ class UserProfile : BaseActivity() {
     }
 
     override fun onStart() {
-        requestApis()
+        if (isNetworkConnected())
+            requestApis()
         super.onStart()
     }
 }
