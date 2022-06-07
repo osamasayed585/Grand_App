@@ -20,8 +20,8 @@
 
         <activity
             android:name=".ui.searchActivity.SearchResultsActivity"
-            android:launchMode="singleTop"
-            android:exported="false">
+            android:exported="false"
+            android:launchMode="singleTop">
 
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
