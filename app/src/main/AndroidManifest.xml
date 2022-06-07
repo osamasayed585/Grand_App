@@ -14,12 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value="com.apkgetter.SearchResultsActivity" />
+
         <activity
             android:name=".ui.searchActivity.SearchResultsActivity"
+            android:launchMode="singleTop"
             android:exported="false">
 
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
 
             <meta-data

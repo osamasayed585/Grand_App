@@ -23,4 +23,7 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
 
     @Inject
     lateinit var onApiError: MutableLiveData<String>
+
+    @Inject
+    lateinit var onTellUserAnyThings: MutableLiveData<String>
 }
