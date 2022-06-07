@@ -18,4 +18,6 @@ interface LocalRepository {
 
     suspend fun addAllAlbums(albums: List<Albums>)
 
+    suspend fun search(search: String?): List<Photos>
+
 }

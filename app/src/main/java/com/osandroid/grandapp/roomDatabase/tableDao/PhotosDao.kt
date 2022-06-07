@@ -16,4 +16,8 @@ interface PhotosDao {
     suspend fun fetchAllPhotosData(): List<Photos>
 
 
+    @Query("SELECT * FROM Photos WHERE title LIKE  '%' || :search || '%'")
+    suspend fun search(search: String?): List<Photos>
+
+
 }

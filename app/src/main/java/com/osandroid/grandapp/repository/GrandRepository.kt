@@ -55,4 +55,8 @@ class GrandRepository @Inject constructor(
         db.albumDao().addAllAlbums(albums)
     }
 
+    override suspend fun search(search: String?) = withContext(Dispatchers.IO) {
+        db.photosDao().search(search)
+    }
+
 }

@@ -76,7 +76,7 @@ class UserProfileViewModel @Inject constructor() : BaseViewModel() {
             userProfileResponse.postValue(result)
         } else {
             onLoadingProgressBar.postValue(false)
-            Timber.i("Osama No Data")
+            Timber.i("Osama No Data in User")
         }
     }
 
@@ -89,7 +89,7 @@ class UserProfileViewModel @Inject constructor() : BaseViewModel() {
             albumsResponse.postValue(result)
         } else {
             onLoadingProgressBar.postValue(false)
-            Timber.i("Osama No Data")
+            Timber.i("Osama No Data in Albums")
         }
     }
 
