@@ -22,7 +22,8 @@
 - Following [Clean Architecture approach](https://proandroiddev.com/mvvm-with-clean-architecture-c2c021e05c89)
 - Following MVVM Architectural Design Pattern
 
-
+## Under Development 🚧
+- search part is not complated, there's a bug that will take a lot of time to resolve, if I'm given enough time, it will be completed.
 
 
 ## Result 📺
