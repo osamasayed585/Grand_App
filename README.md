@@ -13,11 +13,11 @@
 - [Timber](https://github.com/JakeWharton/timber) - Log
 - [Gson](https://github.com/google/gson) - JSON library
 - [Material Components](https://github.com/material-components/material-components-android) - Material Design
+- [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) - to work with a team
 - [Lottie](https://airbnb.design/lottie/) - Vector animation library
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 - [Room](https://developer.android.com/training/data-storage/room)
-- [Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 - [OkHttpClient](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/)
 - Following [Clean Architecture approach](https://proandroiddev.com/mvvm-with-clean-architecture-c2c021e05c89)
 - Following MVVM Architectural Design Pattern
